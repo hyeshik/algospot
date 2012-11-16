@@ -299,8 +299,8 @@ def main():
                 print key, "============"
                 print x[key]
 
+    sandbox = Sandbox("runner", home_type="bind")
     try:
-        sandbox = Sandbox("runner", home_type="bind")
         sandbox.run_interactive("bash")
         """
         sandbox.mount_home("cow")

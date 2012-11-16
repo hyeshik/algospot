@@ -26,13 +26,14 @@ def get_last_comment(parser, token):
     return GetLastCommentNode.handle_token(parser, token)
 
 class SourceCodeNode(template.Node):
+    mapping_to_pygment = {'py3': 'py', 'py2': 'py'}
     def __init__(self, code, lang):
         self.code = template.Variable(code)
         self.lang = template.Variable(lang)
     def render(self, context):
         code = self.code.resolve(context)
         lang = self.lang.resolve(context)
-        lexer = get_lexer_by_name(lang)
+        lexer = get_lexer_by_name(self.mapping_to_pygment.get(lang, lang))
         formatter = HtmlFormatter(style="colorful")
         return highlight(code, lexer, formatter).replace("\n", "<br/>")
 

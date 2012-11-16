@@ -5,7 +5,7 @@ def system(cmd):
                             stderr=subprocess.PIPE).communicate()
 
 LANGUAGE = "Python 3"
-EXT = "py"
+EXT = "py3"
 VERSION = system(["python3", "--version"])[1].split("\n")[0]
 ADDITIONAL_FILES = []
 

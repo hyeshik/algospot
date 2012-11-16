@@ -21,3 +21,19 @@ for file in files:
         print 'failed to load judge module', file
         continue
 sys.path.remove(languages_dir)
+
+# 사용언어 목록을 보여주는 순서를 조작해 봅시다
+priority = dict((ext, prio) for prio, ext in enumerate("""
+        py2 py3 cpp pl java rb hs scala node
+    """.split()))
+class ordered_dict(dict):
+    def __init__(self, d, prio):
+        self.priority = prio
+        self.update(d)
+        self.d = d
+    def items(self):
+        items = dict.items(self)
+        items.sort(key=lambda (k, v): self.priority.get(k, 999))
+        return items
+
+modules = ordered_dict(modules, priority)
