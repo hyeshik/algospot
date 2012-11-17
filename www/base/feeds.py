@@ -4,9 +4,9 @@ from forum.models import Post
 from rendertext import render_text
 
 class PostFeed(Feed):
-    title = 'algospot.com posts'
+    title = 'fiveprime.kr posts'
     link = '/'
-    description = u'알고스팟 새 글 목록'
+    description = u'파이브프라임 새 글 목록'
     def items(self):
         return Post.objects.order_by('-created_on')[:30]
     def item_title(self, obj):

@@ -24,7 +24,7 @@ def index(request):
         recent_activity = recent_activity.exclude(admin_only=True)
     recent_activity = recent_activity[:10].all()
     return render(request, "index.html",
-                  {'title': u'알고스팟에 오신 것을 환영합니다!',
+                  {'title': u'파이브프라임에 오신 것을 환영합니다!',
                    'news': recent_news,
                    'actions': recent_activity,
                   })
@@ -140,4 +140,4 @@ def delete_comment(request, comment_id):
                        "next": request.GET.get("next", "/")})
 
 def calendar(request):
-    return render(request, "calendar.html", {'title': u'알고스팟 캘린더'})
+    return render(request, "calendar.html", {'title': u'파이브프라임 캘린더'})

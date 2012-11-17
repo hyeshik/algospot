@@ -7,7 +7,7 @@
 			<!--[if (gt IE 9)|!(IE)]><!--> 
 <html lang="en" class="no-js"> <!--<![endif]-->
 	<head>
-		<title>algospot.com :: {% block title %}main{% endblock %}</title>
+		<title>fiveprime.kr :: {% block title %}main{% endblock %}</title>
 		<meta charset="UTF-8">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -138,13 +138,13 @@
 								<!--	</a>-->
 								<!--</li>-->
 								<li>
-									<a href="{% url wiki-detail "알고스팟_온라인_저지" %}">
+									<a href="{% url wiki-detail "파이브프라임" %}">
 										튜토리얼
 									</a>
 								</li>
 							</ul>
-						</li>
-						<li class="{% block calendar_class %}{% endblock %}"><a href="{% url calendar %}" class="no-submenu">캘린더</a></li>
+						</li>{% comment %}
+						<li class="{% block calendar_class %}{% endblock %}"><a href="{% url calendar %}" class="no-submenu">캘린더</a></li>{% endcomment %}
 						{% if user.is_superuser %}
 							<li><a href="/admin" class="no-submenu">관리자 페이지</a></li>
 						{% endif %}
@@ -164,6 +164,7 @@
 					<a href="{{ campaign.link }}"><img src="{{ campaign.image }}"/></a>
 				</section>
 				{% endif %}
+                                {% comment %}
 				<!--Sidebar -->
 				<section class="sidebar nested" id="calendar_upcoming">
 					<h2>다가오는 이벤트들</h2>
@@ -185,6 +186,7 @@
 					</span>
 					<a class="button-link" href="{% url calendar %}" title="See all events!">see all</a>
 				</section>
+                                {% endcomment %}
 				<section class="sidebar feed">
 
 					<a href="{% url postfeed %}"><img src="/static/images/rss.png"/></a>
